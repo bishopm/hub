@@ -4,15 +4,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Config;
 use Bishopm\Hub\Hub;
 use Bishopm\Hub\Http\Middleware\AdminRoute;
-use Bishopm\Hub\Livewire\BarcodeScanner;
-use Bishopm\Hub\Livewire\BookReview;
 use Bishopm\Hub\Livewire\Calendar;
-use Bishopm\Hub\Livewire\Find;
-use Bishopm\Hub\Livewire\Live;
-use Bishopm\Hub\Livewire\LoginForm;
-use Bishopm\Hub\Livewire\PastoralNote;
-use Bishopm\Hub\Models\Individual;
-use Bishopm\Hub\Models\Pastor;
 use Bishopm\Hub\Models\User;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Database\Eloquent\Relations\Relation;
@@ -20,7 +12,6 @@ use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\View;
 use Livewire\Livewire;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -145,14 +136,7 @@ class HubServiceProvider extends ServiceProvider
 
         // Registering package commands.
         $this->commands([
-            'Bishopm\Hub\Console\Commands\BirthdayEmail',
-            'Bishopm\Hub\Console\Commands\CheckinEmail',
-            'Bishopm\Hub\Console\Commands\GivingEmail',
-            'Bishopm\Hub\Console\Commands\InstallHub',
-            'Bishopm\Hub\Console\Commands\LiveMessages',
-            'Bishopm\Hub\Console\Commands\MaintenanceEmail',
-            'Bishopm\Hub\Console\Commands\MonthlyMeasures',
-            'Bishopm\Hub\Console\Commands\RecurringTasks'
+            'Bishopm\Hub\Console\Commands\InstallHub'
         ]);
     }
 }

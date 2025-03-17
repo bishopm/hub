@@ -4,7 +4,7 @@ namespace Bishopm\Hub\Console\Commands;
 
 use Illuminate\Console\Command;
 
-class InstallChurch extends Command
+class InstallHub extends Command
 {
     /**
      * The name and signature of the console command.
