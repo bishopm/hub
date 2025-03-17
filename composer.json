@@ -1,0 +1,54 @@
+{
+    "name": "bishopm/hub",
+    "description": "Laravel based community centre software",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michael Bishop",
+            "email": "michael@westvillemethodist.co.za",
+            "homepage": "http://learningchurch.org"
+        }
+    ],
+    "homepage": "https://github.com/bishopm/hub",
+    "keywords": ["Laravel", "Community"],
+    "require": {
+        "illuminate/support": "~12",
+	"livewire/livewire": "~3",
+    	"filament/filament": "^3.2.133",
+        "guava/calendar": "~1",
+        "outerweb/filament-settings": "~1",
+        "joaopaulolndev/filament-pdf-viewer": "~1",
+        "filament/spatie-laravel-tags-plugin": "~3",
+        "dotswan/filament-map-picker": "~1",
+        "stechstudio/filament-impersonate": "~3",
+        "althinect/filament-spatie-roles-permissions": "~2",
+        "spatie/laravel-google-calendar": "~3",
+        "yaza/laravel-google-drive-storage": "^4",
+        "spatie/laravel-honeypot": "^4",
+        "pusher/pusher-php-server": "^7"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~9.0",
+        "orchestra/testbench": "~7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bishopm\\Hub\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Bishopm\\Hub\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Bishopm\\Hub\\Providers\\HubServiceProvider"
+            ],
+            "aliases": {
+                "Hub": "Bishopm\\Hub\\Facades\\Hub"
+            }
+        }
+    }
+}
