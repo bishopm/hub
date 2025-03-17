@@ -1,0 +1,15 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use Spatie\Honeypot\ProtectAgainstSpam;
+
+// Website routes
+Route::middleware(['web'])->controller('\Bishopm\Hub\Http\Controllers\HomeController')->group(function () {
+    Route::get('/', 'home')->name('web.home');
+    Route::post('/', 'home')->middleware(ProtectAgainstSpam::class)->name('web.home');
+    if (substr(url()->current(), strrpos(url()->current(), '/' )+1)<>"admin"){
+        Route::get('/{page}', 'page')->name('web.page');
+    }
+});
+
+
