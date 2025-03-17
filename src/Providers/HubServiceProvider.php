@@ -25,7 +25,7 @@ use Livewire\Livewire;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
-class ChurchServiceProvider extends ServiceProvider
+class HubServiceProvider extends ServiceProvider
 {
     /**
      * Perform post-registration booting of services.
