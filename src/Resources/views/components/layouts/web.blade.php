@@ -30,6 +30,9 @@
   <link href="{{ asset('hub/vendor/aos/aos.css') }}" rel="stylesheet">
   <link href="{{ asset('hub/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
 
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <link rel="stylesheet" href="{{ asset('hub/css/leaflet.css') }}">
+
   <!-- Main CSS File -->
   <link href="{{ asset('hub/css/main.css') }}" rel="stylesheet">
 </head>
@@ -40,7 +43,7 @@
       <a href="{{url('/')}}" class="logo d-flex align-items-center me-auto me-xl-0">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="{{ asset('hub/images/logo.png') }}" alt=""> -->
-        <h1 class="sitename">{{setting('general.site_name')}}</h1>
+        <h4 class="sitename">{{setting('general.site_name')}}</h4>
       </a>
 
       <nav id="navmenu" class="navmenu">
@@ -100,50 +103,23 @@
           </div>
         </div>
 
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
-          </ul>
+        <div class="col-lg-8 col-md-6 footer-links">
+          <div id="mapid" style="height:250px;"></div>
+          <script>
+              var coords;
+              coords = [{{setting('general.map_location')['lat']}},{{setting('general.map_location')['lng']}}];
+              var mymap = L.map('mapid').setView(L.latLng(coords), 15);
+              L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+              attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+              maxZoom: 18,
+              id: 'mapbox/streets-v11',
+              tileSize: 512,
+              zoomOffset: -1,
+              accessToken: '{{setting('general.mapbox_token')}}'
+              }).addTo(mymap);
+              var marker = L.marker(L.latLng(coords)).addTo(mymap);
+          </script>
         </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Our Services</h4>
-          <ul>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Web Development</a></li>
-            <li><a href="#">Product Management</a></li>
-            <li><a href="#">Marketing</a></li>
-            <li><a href="#">Graphic Design</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Hic solutasetp</h4>
-          <ul>
-            <li><a href="#">Molestiae accusamus iure</a></li>
-            <li><a href="#">Excepturi dignissimos</a></li>
-            <li><a href="#">Suscipit distinctio</a></li>
-            <li><a href="#">Dilecta</a></li>
-            <li><a href="#">Sit quas consectetur</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Nobis illum</h4>
-          <ul>
-            <li><a href="#">Ipsam</a></li>
-            <li><a href="#">Laudantium dolorum</a></li>
-            <li><a href="#">Dinera</a></li>
-            <li><a href="#">Trodelas</a></li>
-            <li><a href="#">Flexo</a></li>
-          </ul>
-        </div>
-
       </div>
     </div>
 

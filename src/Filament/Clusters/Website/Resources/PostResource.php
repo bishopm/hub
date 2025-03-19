@@ -78,8 +78,8 @@ class PostResource extends Resource
                         Forms\Components\DateTimePicker::make('published_at')
                         ->native(false)
                         ->default(now())
-                        ->displayFormat('Y-m-d')
-                        ->format('Y-m-d'),
+                        ->displayFormat('Y-m-d H:i')
+                        ->format('Y-m-d H:i'),
                         Forms\Components\TextInput::make('slug')
                         ->required()
                         ->maxLength(191),
