@@ -4,7 +4,7 @@ namespace Bishopm\Hub\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class Church extends Facade
+class Hub extends Facade
 {
     /**
      * Get the registered name of the component.
@@ -13,6 +13,6 @@ class Church extends Facade
      */
     protected static function getFacadeAccessor(): string
     {
-        return 'church';
+        return 'hub';
     }
 }

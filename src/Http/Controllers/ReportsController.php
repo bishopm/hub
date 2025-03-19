@@ -19,8 +19,8 @@ class ReportsController extends Controller
         $this->title="";
         $this->subtitle="";
         $this->page=0;
-        $this->logo=url('/') . "/public/church/images/blacklogo.png";
-        $this->widelogo=url('/') . "/public/church/images/bwidelogo.png";
+        $this->logo=url('/') . "/public/hub/images/blacklogo.png";
+        $this->widelogo=url('/') . "/public/hub/images/bwidelogo.png";
     }
     
 }

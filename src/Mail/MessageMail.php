@@ -44,7 +44,7 @@ class MessageMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: 'church::mail.templates.message',
+            markdown: 'hub::mail.templates.message',
             with: [
                 'subject' => 'Message from website',
                 'body' => $this->data['message'],

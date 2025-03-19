@@ -72,7 +72,7 @@ class Calendar extends Component
     }
 
     public function render(){
-        return view('church::livewire.calendar');
+        return view('hub::livewire.calendar');
     }
 
     private function calendar_attend($description){

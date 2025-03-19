@@ -31,9 +31,9 @@ class AdminPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Teal
             ])
-            ->discoverResources(in: base_path('vendor/bishopm/church/src/Filament/Resources'), for: 'Bishopm\\Hub\\Filament\\Resources')
-            ->discoverPages(in: base_path('vendor/bishopm/church/src/Filament/Pages'), for: 'Bishopm\\Hub\\Filament\\Pages')
-            ->discoverClusters(in: base_path('vendor/bishopm/church/src/Filament/Clusters'), for: 'Bishopm\\Hub\\Filament\\Clusters')
+            ->discoverResources(in: base_path('vendor/bishopm/hub/src/Filament/Resources'), for: 'Bishopm\\Hub\\Filament\\Resources')
+            ->discoverPages(in: base_path('vendor/bishopm/hub/src/Filament/Pages'), for: 'Bishopm\\Hub\\Filament\\Pages')
+            ->discoverClusters(in: base_path('vendor/bishopm/hub/src/Filament/Clusters'), for: 'Bishopm\\Hub\\Filament\\Clusters')
             ->pages([
                 Dashboard::class,
             ])
@@ -60,6 +60,11 @@ class AdminPanelProvider extends PanelProvider
                 Authenticate::class,
             ])
             ->userMenuItems([
+                MenuItem::make()
+                    ->label('Website')
+                    ->url('/')
+                    ->openUrlInNewTab()
+                    ->icon('heroicon-o-globe-alt'),
                 MenuItem::make()
                     ->label('Settings')
                     ->url('/admin/settings')

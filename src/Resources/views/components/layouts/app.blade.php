@@ -9,18 +9,18 @@
   <meta name="description" content="">
   <meta name="keywords" content="">
   <!-- Favicons -->
-  <link href="{{ asset('church/images/icons/favicon.png') }}" rel="icon">
-  <link href="{{ asset('church/images/icons/apple-touch-icon.png') }}" rel="apple-touch-icon">
+  <link href="{{ asset('hub/images/icons/favicon.png') }}" rel="icon">
+  <link href="{{ asset('hub/images/icons/apple-touch-icon.png') }}" rel="apple-touch-icon">
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-  <link rel="stylesheet" href="{{ asset('church/css/leaflet.css')}}">
+  <link rel="stylesheet" href="{{ asset('hub/css/leaflet.css')}}">
   <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/{{setting('website.theme')}}/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="{{ asset('church/css/custom.css') }}">
+  <link rel="stylesheet" href="{{ asset('hub/css/custom.css') }}">
   
   <!-- PWA -->
   <link rel="manifest" href="{{ asset('manifest.json') }}" crossorigin="use-credentials" />
@@ -30,26 +30,26 @@
   <!-- Add to homescreen for Chrome on Android -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="application-name" content="WMC">
-  <link rel="icon" sizes="512x512" href="{{ asset('church/images/icons/icon-512x512.png') }}">
+  <link rel="icon" sizes="512x512" href="{{ asset('hub/images/icons/icon-512x512.png') }}">
   
   <!-- Add to homescreen for Safari on iOS -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="WMC">
-  <link rel="apple-touch-icon" href="{{ asset('church/images/icons/icon-512x512.png') }}">
-  <link href="{{ asset('church/images/icons/splash-640x1136.png') }}" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
-  <link href="{{ asset('church/images/icons/splash-750x1334.png') }}" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
-  <link href="{{ asset('church/images/icons/splash-1242x2208.png') }}" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
-  <link href="{{ asset('church/images/icons/splash-1125x2436.png') }}" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
-  <link href="{{ asset('church/images/icons/splash-828x1792.png') }}" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
-  <link href="{{ asset('church/images/icons/splash-1242x2688.png') }}" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
-  <link href="{{ asset('church/images/icons/splash-1536x2048.png') }}" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
-  <link href="{{ asset('church/images/icons/splash-1668x2224.png') }}" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
-  <link href="{{ asset('church/images/icons/splash-1668x2388.png') }}" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
-  <link href="{{ asset('church/images/icons/splash-2048x2732.png') }}" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+  <link rel="apple-touch-icon" href="{{ asset('hub/images/icons/icon-512x512.png') }}">
+  <link href="{{ asset('hub/images/icons/splash-640x1136.png') }}" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+  <link href="{{ asset('hub/images/icons/splash-750x1334.png') }}" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+  <link href="{{ asset('hub/images/icons/splash-1242x2208.png') }}" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
+  <link href="{{ asset('hub/images/icons/splash-1125x2436.png') }}" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
+  <link href="{{ asset('hub/images/icons/splash-828x1792.png') }}" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+  <link href="{{ asset('hub/images/icons/splash-1242x2688.png') }}" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
+  <link href="{{ asset('hub/images/icons/splash-1536x2048.png') }}" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+  <link href="{{ asset('hub/images/icons/splash-1668x2224.png') }}" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+  <link href="{{ asset('hub/images/icons/splash-1668x2388.png') }}" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+  <link href="{{ asset('hub/images/icons/splash-2048x2732.png') }}" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
   <!-- Tile for Win8 -->
   <meta name="msapplication-TileColor" content="#ffffff">
-  <meta name="msapplication-TileImage" content="{{ asset('church/images/icons/icon-512x512.png') }}">
+  <meta name="msapplication-TileImage" content="{{ asset('hub/images/icons/icon-512x512.png') }}">
   <script type="text/javascript">
       // Initialize the service worker
       if ('serviceWorker' in navigator) {
@@ -169,8 +169,8 @@
     </div>
     <div class="col-1"></div>
   </div>
-  <script src="{{ asset('church/js/bootstrap-bundle.min.js') }}"></script>
-  <script src="{{ asset('church/js/custom.js') }}"></script>
+  <script src="{{ asset('hub/js/bootstrap-bundle.min.js') }}"></script>
+  <script src="{{ asset('hub/js/custom.js') }}"></script>
   <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
   <script>
       Pusher.logToConsole = true;

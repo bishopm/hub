@@ -12,6 +12,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Spatie\Permission\Traits\HasRoles;
 use Filament\Panel;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable implements FilamentUser
 {
@@ -51,13 +52,13 @@ class User extends Authenticatable implements FilamentUser
         ];
     }
 
-    public function individual(): HasOne
-    {
-        return $this->hasOne(Individual::class);
-    }
-
     public function canAccessPanel(Panel $panel): bool
     {
         return true;
+    }
+
+    public function posts(): HasMany
+    {
+        return $this->hasMany(Post::class);
     }
 }

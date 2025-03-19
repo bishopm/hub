@@ -7,7 +7,7 @@
             <div class="col-sm-12 col-md-5 col-lg-4 col-xl-4 order-lg-2 offset-xl-1 mb-4">
               <div class="img-wrap text-center text-md-left" data-aos="fade-up" data-aos-delay="100">
                 <div class="img">
-                  <img src="/public/church/img/img_v_3.jpg" alt="circle image" class="img-fluid">
+                  <img src="/public/hub/img/img_v_3.jpg" alt="circle image" class="img-fluid">
                 </div>
               </div>
             </div>
@@ -92,7 +92,7 @@
 
           <div class="col-lg-5">
             <div class="images-overlap">
-              <img src="/public/church/img/img_v_1.jpg" alt="student" class="img-fluid img-1" data-aos="fade-up">
+              <img src="/public/hub/img/img_v_1.jpg" alt="student" class="img-fluid img-1" data-aos="fade-up">
             </div>
           </div>
 
@@ -237,7 +237,7 @@
               </script>
               <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                  <img src="/public/church/img/img_h_1.jpg" alt="Image" class="img-fluid">
+                  <img src="/public/hub/img/img_h_1.jpg" alt="Image" class="img-fluid">
                   <div class="p-4">
                     <h3 class="text-black h5 mb-3">Modern and clean design</h3>
                     <div class="row">
@@ -266,13 +266,13 @@
                   </div>
                 </div>
                 <div class="swiper-slide">
-                  <img src="/public/church/img/img_h_2.jpg" alt="Image" class="img-fluid">
+                  <img src="/public/hub/img/img_h_2.jpg" alt="Image" class="img-fluid">
                 </div>
                 <div class="swiper-slide">
-                  <img src="/public/church/img/img_h_3.jpg" alt="Image" class="img-fluid">
+                  <img src="/public/hub/img/img_h_3.jpg" alt="Image" class="img-fluid">
                 </div>
                 <div class="swiper-slide">
-                  <img src="/public/church/img/img_h_4.jpg" alt="Image" class="img-fluid">
+                  <img src="/public/hub/img/img_h_4.jpg" alt="Image" class="img-fluid">
                 </div>
               </div>
             </div>
@@ -540,7 +540,7 @@
                 <div class="swiper-slide">
                   <div class="testimonial mx-auto">
                     <figure class="img-wrap">
-                      <img src="/public/church/img/testimonials/testimonials-1.jpg" alt="Image" class="img-fluid">
+                      <img src="/public/hub/img/testimonials/testimonials-1.jpg" alt="Image" class="img-fluid">
                     </figure>
                     <h3 class="name">Adam Aderson</h3>
                     <blockquote>
@@ -555,7 +555,7 @@
                 <div class="swiper-slide">
                   <div class="testimonial mx-auto">
                     <figure class="img-wrap">
-                      <img src="/public/church/img/testimonials/testimonials-2.jpg" alt="Image" class="img-fluid">
+                      <img src="/public/hub/img/testimonials/testimonials-2.jpg" alt="Image" class="img-fluid">
                     </figure>
                     <h3 class="name">Lukas Devlin</h3>
                     <blockquote>
@@ -570,7 +570,7 @@
                 <div class="swiper-slide">
                   <div class="testimonial mx-auto">
                     <figure class="img-wrap">
-                      <img src="/public/church/img/testimonials/testimonials-3.jpg" alt="Image" class="img-fluid">
+                      <img src="/public/hub/img/testimonials/testimonials-3.jpg" alt="Image" class="img-fluid">
                     </figure>
                     <h3 class="name">Kayla Bryant</h3>
                     <blockquote>
