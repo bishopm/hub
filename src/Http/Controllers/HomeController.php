@@ -30,6 +30,11 @@ class HomeController extends Controller
         return view('hub::web.home',$data);
     }
 
+    public function group($slug){
+        $data['group']=Tenant::whereSlug($slug)->first();
+        return view('hub::web.group',$data);
+    }
+
     public function groups(){
         $data['groups']=Tenant::where('publish',1)->where('active',1)->orderBy('tenant')->get();
         return view('hub::web.groups',$data);

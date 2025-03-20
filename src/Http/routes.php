@@ -9,6 +9,7 @@ Route::middleware(['web'])->controller('\Bishopm\Hub\Http\Controllers\HomeContro
     Route::post('/', 'home')->middleware(ProtectAgainstSpam::class)->name('web.home');
     Route::get('/blog/{year}/{month}/{slug}', 'blogpost')->name('web.blogpost');
     Route::get('/groups', 'groups')->name('web.groups');
+    Route::get('/groups/{slug}', 'group')->name('web.group');
     Route::get('/subject/{slug}', 'subject')->name('web.subject');
     if (substr(url()->current(), strrpos(url()->current(), '/' )+1)<>"admin"){
         Route::get('/{page}', 'page')->name('web.page');
