@@ -2,6 +2,7 @@
 
 namespace Bishopm\Hub\Http\Controllers;
 
+use Bishopm\Hub\Models\Tenant;
 use Bishopm\Hub\Models\Page;
 use Bishopm\Hub\Models\Post;
 use Illuminate\Support\Facades\DB;
@@ -30,7 +31,7 @@ class HomeController extends Controller
     }
 
     public function groups(){
-        $data['groups']=DB::connection('church')->table('tenants')->get();
+        $data['groups']=Tenant::where('publish',1)->where('active',1)->orderBy('tenant')->get();
         return view('hub::web.groups',$data);
     }
 
