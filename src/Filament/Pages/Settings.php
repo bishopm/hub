@@ -21,15 +21,26 @@ class Settings extends BaseSettings
         return [
             Tabs::make('Settings')
                 ->schema([
+                    Tabs\Tab::make('Database')
+                        ->columns(2)
+                        ->schema([
+                            TextInput::make('database.database'),
+                            TextInput::make('database.username'),
+                            TextInput::make('database.password')->password(),
+                        ]),
                     Tabs\Tab::make('General')
                         ->columns(2)
                         ->schema([
                             TextInput::make('general.site_name')->required(),
                             TextInput::make('general.phone'),
                             TextInput::make('general.email'),
-                            TextInput::make('general.mapbox_token'),
                             Textarea::make('general.physical_address'),
                             Map::make('general.map_location')->label('Location')
+                        ]),
+                    Tabs\Tab::make('Services')
+                        ->columns(2)
+                        ->schema([
+                            TextInput::make('services.mapbox_token'),
                         ]),
                 ]),
         ];

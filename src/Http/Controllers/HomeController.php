@@ -2,6 +2,7 @@
 
 namespace Bishopm\Hub\Http\Controllers;
 
+use Bishopm\Hub\Models\Page;
 use Bishopm\Hub\Models\Post;
 use Illuminate\Support\Facades\DB;
 use Spatie\Tags\Tag;
@@ -26,6 +27,16 @@ class HomeController extends Controller
     public function home(){
         $data['posts']=Post::with('person')->orderBy('published_at','DESC')->get()->take(5);
         return view('hub::web.home',$data);
+    }
+
+    public function groups(){
+        $data['groups']=DB::connection('church')->table('tenants')->get();
+        return view('hub::web.groups',$data);
+    }
+
+    public function page($page){
+        $data['page']=Page::where('slug',$page)->where('published',1)->firstOrFail();
+        return view('hub::web.page',$data);
     }
 
     public function subject($slug){

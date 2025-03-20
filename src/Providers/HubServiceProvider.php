@@ -33,6 +33,11 @@ class HubServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__.'/../Database/migrations');
         $this->loadRoutesFrom(__DIR__.'/../Http/routes.php');
         if (Schema::hasTable('settings')) {
+            Config::set('database.connections.church.database',setting('database.database'));
+            Config::set('database.connections.church.username',setting('database.username'));
+            Config::set('database.connections.church.password',setting('database.password'));
+            Config::set('database.connections.church.driver','mysql');
+            Config::set('database.connections.church.host',env('DB_HOST'));
             Config::set('google-calendar.calendar_id',setting('email.hub_email'));
             Config::set('mail.default',setting('email.mailer'));
             Config::set('mail.mailers.' . setting('email.mailer') . '.host',setting('email.mail_host'));

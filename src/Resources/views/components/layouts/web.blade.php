@@ -49,7 +49,7 @@
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="{{url('/about')}}">About</a></li>
-          <li><a href="groups.html">Groups</a></li>
+          <li><a href="{{url('/groups')}}">Groups</a></li>
           <li><a href="groups.html">Projects</a></li>
           <li class="dropdown"><a href="#"><span>Categories</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
@@ -81,7 +81,11 @@
     </div>
   </header>
   <main class="main">
-    {{$slot}}
+    <div class="container">
+      <div class="row"> 
+        {{$slot}}
+      </div>
+    </div>
   </main>
   <footer id="footer" class="footer dark-background">
 
@@ -115,7 +119,7 @@
               id: 'mapbox/streets-v11',
               tileSize: 512,
               zoomOffset: -1,
-              accessToken: '{{setting('general.mapbox_token')}}'
+              accessToken: '{{setting('services.mapbox_token')}}'
               }).addTo(mymap);
               var marker = L.marker(L.latLng(coords)).addTo(mymap);
           </script>
