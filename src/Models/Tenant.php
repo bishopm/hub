@@ -3,8 +3,8 @@
 namespace Bishopm\Hub\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Spatie\Tags\HasTags;
 
 class Tenant extends Model
@@ -15,15 +15,20 @@ class Tenant extends Model
     protected $guarded = ['id'];
     protected $connection = 'church';
 
-    /*
-    public function bookings(): HasMany
+    public static function getTagClassName(): string
     {
-        return $this->hasMany(Booking::class);
+        return Tag::class;
     }
 
     public function diaryentries(): MorphMany
     {
         return $this->morphMany(Diaryentry::class,'diarisable');
     }
-    */
+
+    public function tags(): MorphToMany
+    {
+        return $this
+            ->morphToMany(self::getTagClassName(), 'taggable', 'taggables', null, 'tag_id')
+            ->orderBy('order_column');
+    }
 }

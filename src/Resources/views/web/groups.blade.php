@@ -1,6 +1,6 @@
 <x-hub::layouts.web pageName="Groups">
-    <div class="col-md-12 post-content" data-aos="fade-up">
-        <table class="table table-condensed table-borderless table-striped">
+    <div class="col-md-12" data-aos="fade-up">
+        <table class="table table-sm table-borderless table-striped">
             <tr><th colspan="2">Groups</th></tr>
             @forelse ($groups as $group)
                 <tr>

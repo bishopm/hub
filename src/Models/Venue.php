@@ -2,17 +2,11 @@
 
 namespace Bishopm\Hub\Models;
 
-use Guava\Calendar\Contracts\Resourceable;
-use Guava\Calendar\ValueObjects\Resource;
 use Illuminate\Database\Eloquent\Model;
 
-class Venue extends Model implements Resourceable
+class Venue extends Model
 {
     public $table = 'venues';
     protected $guarded = ['id'];
-
-    public function toResource(): Resource|array {
-        return Resource::make($this)
-            ->title($this->venue);
-    }
+    protected $connection = 'church';
 }

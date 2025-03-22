@@ -4,21 +4,23 @@
       <div class="row g-5">
         <div class="col-lg-4">
           <div class="post-entry lg">
-            <a href="blog-details.html"><img src="{{ asset('storage/public/' . $posts[0]->image) }}" alt="" class="img-fluid"></a>
-            <div class="post-meta"><span class="date">
-              @foreach ($posts[0]->tags as $tag)
-                {{$tag->name}} <span class="mx-1">•</span>
-              @endforeach
-              </span> <span>{{date('d M Y',strtotime($posts[0]->published_at))}}</span>
-            </div>
-            <h2><a href="{{url('/blog') . '/' . date('Y',strtotime($posts[0]->published_at)) . '/' . date('m',strtotime($posts[0]->published_at)) . '/' . $posts[0]->slug}}">{{$posts[0]->title}}</a></h2>
-            {!!$posts[0]->excerpt!!}
-            <div class="d-flex align-items-center author">
-              <div class="name">
-                <h3 class="m-0 p-0">{{$posts[0]->person->firstname}} {{$posts[0]->person->surname}}</h3>
+            @if (isset($posts[0]))
+              <a href="blog-details.html"><img src="{{ asset('storage/public/' . $posts[0]->image) }}" alt="" class="img-fluid"></a>
+              <div class="post-meta"><span class="date">
+                @foreach ($posts[0]->tags as $tag)
+                  {{$tag->name}} <span class="mx-1">•</span>
+                @endforeach
+                </span> <span>{{date('d M Y',strtotime($posts[0]->published_at))}}</span>
+              </div>
+              <h2><a href="{{url('/blog') . '/' . date('Y',strtotime($posts[0]->published_at)) . '/' . date('m',strtotime($posts[0]->published_at)) . '/' . $posts[0]->slug}}">{{$posts[0]->title}}</a></h2>
+              {!!$posts[0]->excerpt!!}
+              <div class="d-flex align-items-center author">
+                <div class="name">
+                  <h3 class="m-0 p-0">{{$posts[0]->person->firstname}} {{$posts[0]->person->surname}}</h3>
+                </div>
               </div>
             </div>
-          </div>
+          @endif
         </div>
         <div class="col-lg-8">
           <div class="row g-5">
@@ -75,8 +77,33 @@
             </div>
             <!-- Trending Section -->
             <div class="col-lg-4">
-              <div class="trending">
-                <h3>Today@theHub</h3>
+              <div class="text-end">
+                <table class="table table-sm table-borderless">
+                  <tr class="table-dark"><th><h4 class="text-white mt-2">Today@theHub</h4></th></tr>
+                  @foreach ($hours as $hour)
+                    @foreach ($hour as $group=>$time)
+                      <tr class="table-info"><td><small>{{$group}} <b>{{$time}}</b></small></td></tr>
+                    @endforeach
+                  @endforeach
+                  @forelse ($diaryentries as $ttt=>$slot)
+                    <tr class="table-dark"><th>{{$ttt}}</th></tr>
+                    @foreach ($slot as $entry)
+                      <tr>
+                        <td><a href="{{url('/groups/' . $entry->diarisable->slug)}}">{{$entry->diarisable->tenant}}</a> <small>({{$entry->venue->venue}})</small></td>
+                      </tr>
+                    @empty
+                      <tr><td>Nothing booked for today</td></tr>
+                    @endforelse
+                  @endforeach
+                  <tr class="table-dark"><th>Explore</th></tr>
+                  <tr>
+                    <td>
+                      @foreach ($tags as $tag)
+                        <a class="badge bg-dark" href="{{url('/subject/' . $tag['slug'])}}">{{$tag['name']}}</a>
+                      @endforeach
+                    </td>
+                  </tr>
+                </table>
               </div>
             </div> <!-- End Trending Section -->
           </div>
