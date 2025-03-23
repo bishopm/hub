@@ -105,16 +105,14 @@ class HomeController extends Controller
     }
 
     public function subject($slug){
-        /*
-        $tags = \Spatie\Tags\Tag::join('taggables', 'tags.id', '=', 'taggables.tag_id')
-    ->where('taggables.taggable_id', $model->id)
-    ->where('taggables.taggable_type', get_class($model))
-    ->pluck('name');
-    */
-
-
         $data['posts']=[];//Post::withAnyTags($slug)->where('published',1)->get();
-        $data['projects']=Project::withAllTags([$slug],'projects')->where('publish',1)->get();
+        $data['projects']=DB::connection('church')->table('projects')->join('taggables','taggables.taggable_id', '=', 'projects.id')
+        ->join('tags', 'tags.id', '=', 'taggables.tag_id')
+        ->where('taggables.taggable_type', 'project')
+        ->where('taggables.taggable_type', get_class($model))
+        ->pluck('name');
+        
+        Project::withAllTags([$slug],'projects')->where('publish',1)->get();
         $data['groups']=Tenant::withAllTags($slug, 'tenants')->where('publish',1)->get();
         $data['slug']=$slug;
         dd($data);
