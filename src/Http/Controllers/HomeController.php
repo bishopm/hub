@@ -72,7 +72,11 @@ class HomeController extends Controller
         foreach ($diaryentries as $entry){
             $data['diaryentries'][date('H:i',strtotime($entry->diarydatetime))][]=$entry;
         }
-        ksort($data['diaryentries']);
+        if (count($diaryentries)){
+            ksort($data['diaryentries']);
+        } else {
+            $data['diaryentries']=[];
+        }
         $data['posts']=Post::with('person')->orderBy('published_at','DESC')->get()->take(5);
         $tags=DB::connection('church')->table('tags')->where('type','tenants')->orWhere('type','projects')->orderBy('name')->get();
         foreach ($tags as $tag){
@@ -101,10 +105,19 @@ class HomeController extends Controller
     }
 
     public function subject($slug){
+        /*
+        $tags = \Spatie\Tags\Tag::join('taggables', 'tags.id', '=', 'taggables.tag_id')
+    ->where('taggables.taggable_id', $model->id)
+    ->where('taggables.taggable_type', get_class($model))
+    ->pluck('name');
+    */
+
+
         $data['posts']=[];//Post::withAnyTags($slug)->where('published',1)->get();
-        $data['projects']=Project::withAnyTags($slug,'projects')->where('publish',1)->get();
-        $data['groups']=Tenant::withAnyTags($slug, 'tenants')->where('publish',1)->get();
+        $data['projects']=Project::withAllTags([$slug],'projects')->where('publish',1)->get();
+        $data['groups']=Tenant::withAllTags($slug, 'tenants')->where('publish',1)->get();
         $data['slug']=$slug;
+        dd($data);
         return view('hub::web.tag',$data);
     }
 
