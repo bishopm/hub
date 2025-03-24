@@ -7,6 +7,7 @@ use Bishopm\Hub\Models\Tenant;
 use Bishopm\Hub\Models\Page;
 use Bishopm\Hub\Models\Post;
 use Bishopm\Hub\Models\Project;
+use Bishopm\Hub\Models\Resident;
 use Bishopm\Hub\Models\Venue;
 use Bishopm\Hub\Models\Tag;
 use Illuminate\Support\Facades\DB;
@@ -30,7 +31,7 @@ class HomeController extends Controller
     }
 
     public function group($slug){
-        $data['group']=Tenant::whereSlug($slug)->first();
+        $data['group']=Tenant::with('tags')->whereSlug($slug)->first();
         return view('hub::web.group',$data);
     }
 
@@ -40,33 +41,7 @@ class HomeController extends Controller
     }
 
     public function home(){
-        $hours=[
-            'weekday' => [
-                ['Coffee Shop' => '07h30 - 16h30'],
-                ['Westville Crossfit' => '06h30 - 17h30'],
-                ['Westville Methodist Church' => '08h30 - 14h00'],
-                ['Young Ones Nursery' => '07h30 - 14h00']
-            ],
-            'saturday' => [
-                ['Coffee Shop' => 'Closed'],
-                ['Westville Crossfit' => '06h30 - 17h30'],
-                ['Westville Methodist Church' => 'Closed'],
-                ['Young Ones Nursery' => 'Closed']
-            ],
-            'sunday' => [
-                ['Coffee Shop' => 'Closed'],
-                ['Westville Crossfit' => 'Closed'],
-                ['Westville Methodist Church' => 'See service times below'],
-                ['Young Ones Nursery' => 'Closed']
-            ]
-        ];
-        if (date('N')<6){
-            $data['hours']=$hours['weekday'];
-        } elseif (date('N')==6){
-            $data['hours']=$hours['saturday'];
-        } else {
-            $data['hours']=$hours['sunday'];
-        }
+        $data['residents']=Resident::orderBy('resident','ASC')->get()->toArray();
         $today=date('Y-m-d');
         $diaryentries=Diaryentry::with('diarisable','venue')->where('diarydatetime','>=',$today . " 00:00:00")->where('diarydatetime','<=',$today . " 23:59:59")->where('diarisable_type','tenant')->get();
         foreach ($diaryentries as $entry){
@@ -78,24 +53,31 @@ class HomeController extends Controller
             $data['diaryentries']=[];
         }
         $data['posts']=Post::with('person')->orderBy('published_at','DESC')->get()->take(5);
-        $tags=DB::connection('church')->table('tags')->where('type','tenants')->orWhere('type','projects')->orderBy('name')->get();
+        $tags=DB::connection('church')->table('tags')
+        ->join('taggables','tags.id','=','taggables.tag_id')
+        ->where('taggables.taggable_type','=','project')->orWhere('taggables.taggable_type','=','tenant')
+        ->orderBy('name')->get();
         foreach ($tags as $tag){
-            $slug=json_decode($tag->slug)->en;
-            $data['tags'][$slug]=[
-                'name' => json_decode($tag->name)->en,
-                'slug' => $slug
+            $data['tags'][$tag->slug]=[
+                'name' => $tag->name,
+                'slug' => $tag->slug
             ];
         }
         return view('hub::web.home',$data);
     }
 
     public function page($page){
-        $data['page']=Page::where('slug',$page)->where('published',1)->firstOrFail();
-        return view('hub::web.page',$data);
+        $data['resident']=Resident::where('slug',$page)->where('publish',1)->first();
+        if (!$data['resident']){
+            $data['page']=Page::where('slug',$page)->where('published',1)->firstOrFail();
+            return view('hub::web.page',$data);
+        } else {
+            return view('hub::web.resident',$data);
+        }
     }
 
     public function project($slug){
-        $data['project']=Project::whereSlug($slug)->first();
+        $data['project']=Project::with('tags')->whereSlug($slug)->first();
         return view('hub::web.project',$data);
     }
 
@@ -106,16 +88,15 @@ class HomeController extends Controller
 
     public function subject($slug){
         $data['posts']=[];//Post::withAnyTags($slug)->where('published',1)->get();
-        $data['projects']=DB::connection('church')->table('projects')->join('taggables','taggables.taggable_id', '=', 'projects.id')
-        ->join('tags', 'tags.id', '=', 'taggables.tag_id')
-        ->where('taggables.taggable_type', 'project')
-        ->where('taggables.taggable_type', get_class($model))
-        ->pluck('name');
-        
-        Project::withAllTags([$slug],'projects')->where('publish',1)->get();
-        $data['groups']=Tenant::withAllTags($slug, 'tenants')->where('publish',1)->get();
+        $data['groups']=DB::connection('church')->table('tenants')
+            ->join('taggables','tenants.id','=','taggables.taggable_id')->join('tags','tags.id','=','taggables.tag_id')
+            ->where('tags.slug',$slug)->where('taggables.taggable_type','tenant')
+            ->select('tenant','tenants.slug')->get();
+        $data['projects']=DB::connection('church')->table('projects')
+            ->join('taggables','projects.id','=','taggables.taggable_id')->join('tags','tags.id','=','taggables.tag_id')
+            ->where('tags.slug',$slug)->where('taggables.taggable_type','project')
+            ->select('project','projects.slug')->get();
         $data['slug']=$slug;
-        dd($data);
         return view('hub::web.tag',$data);
     }
 
@@ -125,7 +106,7 @@ class HomeController extends Controller
     }
 
     public function venues(){
-        $data['venues']=Venue::orderBy('venue')->get();
+        $data['venues']=Venue::orderBy('venue')->where('publish',1)->get();
         return view('hub::web.venues',$data);
     }
 }

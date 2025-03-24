@@ -83,6 +83,7 @@ class HubServiceProvider extends ServiceProvider
             'tenant' => 'Bishopm\Hub\Models\Tenant',
             'household' => 'Bishopm\Hub\Models\Household',
             'individual' => 'Bishopm\Hub\Models\Individual',
+            'project' => 'Bishopm\Hub\Models\Project'
         ]);
         Gate::before(function (User $user, string $ability) {
             return $user->isSuperAdmin() ? true: null;     

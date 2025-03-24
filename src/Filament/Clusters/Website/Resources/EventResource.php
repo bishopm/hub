@@ -15,9 +15,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class EventResource extends Resource
-{
-    protected static ?int $navigationSort = 3;
-    
+{    
     protected static ?string $model = Event::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-calendar-days';

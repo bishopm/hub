@@ -34,6 +34,7 @@ class Settings extends BaseSettings
                             TextInput::make('general.site_name')->required(),
                             TextInput::make('general.phone'),
                             TextInput::make('general.email'),
+                            TextInput::make('general.instagram'),
                             Textarea::make('general.physical_address'),
                             Map::make('general.map_location')->label('Location')
                         ]),

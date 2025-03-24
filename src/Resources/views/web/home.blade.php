@@ -79,14 +79,18 @@
             <div class="col-lg-4">
               <div class="text-end">
                 <table class="table table-sm table-borderless">
-                  <tr class="table-dark"><th><h4 class="text-white mt-2">Today@theHub</h4></th></tr>
-                  @foreach ($hours as $hour)
-                    @foreach ($hour as $group=>$time)
-                      <tr class="table-info"><td><small>{{$group}} <b>{{$time}}</b></small></td></tr>
-                    @endforeach
+                  <tr class="table-dark"><th><h5 class="text-white mt-1">Today@theHub</h5></th></tr>
+                  @foreach ($residents as $resident)
+                    <tr class="table-dark"><td><small><a class="text-white" href="{{url('/' . $resident['slug'])}}">{{$resident['resident']}}</a><br><b>
+                      @if ($resident[strtolower(date('l'))])
+                        {{$resident[strtolower(date('l'))]}}
+                      @else
+                        Closed
+                      @endif
+                      </b></small></td></tr>
                   @endforeach
                   @forelse ($diaryentries as $ttt=>$slot)
-                    <tr class="table-dark"><th>{{$ttt}}</th></tr>
+                    <tr class="table-info"><th>{{$ttt}}</th></tr>
                     @foreach ($slot as $entry)
                       <tr>
                         <td><a href="{{url('/groups/' . $entry->diarisable->slug)}}">{{$entry->diarisable->tenant}}</a> <small>({{$entry->venue->venue}})</small></td>

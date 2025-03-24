@@ -6,11 +6,9 @@
                 <tr>
                     <td><a href="{{url('/projects/' . $project->slug)}}">{{$project->project}}</a></td>
                     <td>
-                        @if (isset($project->tags))
-                            @foreach ($project->tags as $tag)
-                                <span class="badge bg-dark">{{$tag->name}}</span>
-                            @endforeach
-                        @endif
+                        @foreach ($project->tags as $tag)
+                            <span class="badge bg-dark">{{$tag->name}}</span>
+                        @endforeach
                     </td>
                 </tr>
             @empty
