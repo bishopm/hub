@@ -43,12 +43,7 @@ class ResidentResource extends Resource
                     ->columnSpanFull(),
                 Forms\Components\FileUpload::make('image')
                     ->image()
-                    ->directory('images/resident')
-                    ->previewable(false)
-                    ->imageResizeMode('cover')
-                    ->imageCropAspectRatio('16:9')
-                    ->imageResizeTargetWidth('960')
-                    ->imageResizeTargetHeight('540'),
+                    ->directory('images/resident'),
                 Forms\Components\TextInput::make('monday')
                     ->maxLength(191),
                 Forms\Components\TextInput::make('tuesday')
