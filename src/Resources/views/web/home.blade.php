@@ -105,9 +105,11 @@
                   <tr class="table-dark"><th>Explore</th></tr>
                   <tr>
                     <td>
-                      @foreach ($tags as $tag)
-                        <a class="badge bg-dark" href="{{url('/subject/' . $tag['slug'])}}">{{$tag['name']}}</a>
-                      @endforeach
+                      @if (isset($tags))
+                        @foreach ($tags as $tag)
+                          <a class="badge bg-dark" href="{{url('/subject/' . $tag['slug'])}}">{{$tag['name']}}</a>
+                        @endforeach
+                      @endif
                     </td>
                   </tr>
                 </table>
