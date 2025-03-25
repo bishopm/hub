@@ -8,11 +8,13 @@ use Bishopm\Hub\Filament\Clusters\Website\Resources\ResidentResource\RelationMan
 use Bishopm\Hub\Models\Resident;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
 
 class ResidentResource extends Resource
 {
@@ -28,6 +30,8 @@ class ResidentResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('resident')
                     ->required()
+                    ->live(onBlur: true)
+                    ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))
                     ->maxLength(191),
                 Forms\Components\TextInput::make('slug')
                     ->maxLength(199),
@@ -35,7 +39,7 @@ class ResidentResource extends Resource
                     ->maxLength(191),
                 Forms\Components\TextInput::make('contact')
                     ->maxLength(191),
-                Forms\Components\Textarea::make('description')
+                Forms\Components\RichEditor::make('description')
                     ->columnSpanFull(),
                 Forms\Components\FileUpload::make('image')
                     ->image()
