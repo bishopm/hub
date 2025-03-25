@@ -93,7 +93,10 @@
                     <tr class="table-info"><th>{{$ttt}}</th></tr>
                     @foreach ($slot as $entry)
                       <tr>
-                        <td><a href="{{url('/groups/' . $entry->diarisable->slug)}}">{{$entry->diarisable->tenant}}</a> <small>({{$entry->venue->venue}})</small></td>
+                        <td>
+                          <a href="{{url('/groups/' . $entry->diarisable->slug)}}">{{$entry->diarisable->tenant}}</a> 
+                          <a href="{{url('/venues/' . $entry->venue->slug)}}"><small>({{$entry->venue->venue}})</small></a>
+                        </td>
                       </tr>
                     @empty
                       <tr><td>Nothing booked for today</td></tr>

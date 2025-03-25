@@ -13,7 +13,6 @@ class ListEvents extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            Actions\Action::make('Calendar report')->url(fn (): string => route('reports.calendar')),
             Actions\CreateAction::make(),
         ];
     }

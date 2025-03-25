@@ -58,7 +58,7 @@
       </nav>
 
       <div class="header-social-links">
-        <a href="#" class="linkedin"><i class="text-white bi bi-linkedin"></i></a>
+        <a href="{{setting('general.linkedin')}}" target="_blank" class="linkedin"><i class="text-white bi bi-linkedin"></i></a>
       </div>
 
     </div>
@@ -84,7 +84,7 @@
             <p><strong>Email:</strong> <span>{{setting('general.email')}}</span></p>
           </div>
           <div class="social-links d-flex mt-4">
-            <a href=""><i class="bi bi-linkedin"></i></a>
+            <a href="{{setting('general.linkedin')}}" target="_blank"><i class="bi bi-linkedin"></i></a>
           </div>
         </div>
 
