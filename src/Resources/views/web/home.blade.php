@@ -14,11 +14,6 @@
               </div>
               <h2><a href="{{url('/blog') . '/' . date('Y',strtotime($posts[0]->published_at)) . '/' . date('m',strtotime($posts[0]->published_at)) . '/' . $posts[0]->slug}}">{{$posts[0]->title}}</a></h2>
               {!!$posts[0]->excerpt!!}
-              <div class="d-flex align-items-center author">
-                <div class="name">
-                  <h3 class="m-0 p-0">{{$posts[0]->person->firstname}} {{$posts[0]->person->surname}}</h3>
-                </div>
-              </div>
             </div>
           @endif
         </div>
