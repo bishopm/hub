@@ -90,6 +90,7 @@
 
         <div class="col-lg-8 col-md-6 footer-links">
           <div id="mapid" style="height:250px;"></div>
+          @if (setting('general.map_location'))
           <script>
               var coords;
               coords = [{{setting('general.map_location')['lat']}},{{setting('general.map_location')['lng']}}];
@@ -104,6 +105,7 @@
               }).addTo(mymap);
               var marker = L.marker(L.latLng(coords)).addTo(mymap);
           </script>
+          @endif
         </div>
       </div>
     </div>
