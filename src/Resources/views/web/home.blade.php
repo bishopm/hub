@@ -74,7 +74,7 @@
             <div class="col-lg-4">
               <div class="text-end">
                 <table class="table table-sm table-borderless">
-                  <tr class="table-dark"><th><h5 class="text-white mt-1">Today@theHub</h5></th></tr>
+                  <tr class="table-dark"><th>Today@theHub</th></tr>
                   @foreach ($residents as $resident)
                     <tr class="table-dark"><td><small><a class="text-white" href="{{url('/' . $resident['slug'])}}">{{$resident['resident']}}</a><br><b>
                       @if ($resident[strtolower(date('l'))])
