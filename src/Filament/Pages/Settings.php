@@ -36,7 +36,8 @@ class Settings extends BaseSettings
                             TextInput::make('general.email'),
                             TextInput::make('general.linkedin'),
                             Textarea::make('general.physical_address'),
-                            Map::make('general.map_location')->label('Location')
+                            Map::make('general.map_location')->label('Location'),
+                            TextInput::make('database.church_storage_url'),
                         ]),
                     Tabs\Tab::make('Services')
                         ->columns(2)

@@ -31,7 +31,10 @@ class HomeController extends Controller
     }
 
     public function group($slug){
-        $data['group']=Tenant::with('tags')->whereSlug($slug)->first();
+        $data['group']=Tenant::with(['diaryentries.venue','diaryentries' => function ($q) { 
+            $q->where('diarydatetime', '>', date('Y-m-d'))
+              ->orderBy('diarydatetime', 'ASC')->first();
+        }])->whereSlug($slug)->first();
         return view('hub::web.group',$data);
     }
 
