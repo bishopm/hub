@@ -9,7 +9,7 @@
             <img style="float:right; padding-left:10px;" src="{{setting('general.church_storage_url')}}/{{$group->image}}" alt="Image" class="rounded">
         @endif
         {!! $group->description !!}
-        @if (isset($group->diaryentries))
+        @if (isset($group->diaryentries[0]))
             <h4>Next meeting</h4>
             {{date('l, j F Y H:i', strtotime($group->diaryentries[0]->diarydatetime))}} 
             <a href="{{url('/venues/' . $group->diaryentries[0]->venue->slug)}}">({{$group->diaryentries[0]->venue->venue}})</a>
