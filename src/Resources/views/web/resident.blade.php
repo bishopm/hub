@@ -3,7 +3,7 @@
         <h1>{{$resident->resident}}</h1>
         <div style="min-height: 270px;">
             @if ($resident->image)
-                <img style="float:right; padding-left:10px;" height="250px" src="{{asset('storage/public/' . $resident->image)}}" alt="Image" class="rounded">
+                <img style="float:right; padding-left:10px;" src="{{asset('storage/public/' . $resident->image)}}" alt="Image" class="rounded">
             @endif
             {!!$resident->description!!}<br><br>
             @if ($resident->website)
