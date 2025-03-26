@@ -5,6 +5,14 @@
             <span class="badge bg-dark"><a class="text-white" href="{{url('/subject/' . $tag->slug)}}">{{$tag->name}}</a></span>
         @endforeach
         <br>
+        @if ($project->image)
+            <img style="float:right; padding-left:10px;" src="{{setting('general.church_storage_url')}}/{{$project->image}}" alt="Image" class="rounded">
+        @endif
         {!! $project->description !!}
+        @if (isset($project->diaryentries[0]))
+            <h4>Next meeting</h4>
+            {{date('l, j F Y H:i', strtotime($project->diaryentries[0]->diarydatetime))}} 
+            <a href="{{url('/venues/' . $project->diaryentries[0]->venue->slug)}}">({{$project->diaryentries[0]->venue->venue}})</a>
+        @endif
     </div>
 </x-hub::layout>

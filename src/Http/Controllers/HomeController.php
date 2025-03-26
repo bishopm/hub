@@ -80,7 +80,10 @@ class HomeController extends Controller
     }
 
     public function project($slug){
-        $data['project']=Project::with('tags')->whereSlug($slug)->first();
+        $data['project']=Project::with(['diaryentries.venue','diaryentries' => function ($q) { 
+            $q->where('diarydatetime', '>', date('Y-m-d'))
+              ->orderBy('diarydatetime', 'ASC')->first();
+        }])->whereSlug($slug)->first();
         return view('hub::web.project',$data);
     }
 
