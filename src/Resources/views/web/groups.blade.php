@@ -7,7 +7,7 @@
                     <td><a href="{{url('/groups/' . $group->slug)}}">{{$group->tenant}}</a></td>
                     <td>
                         @foreach ($group->tags as $tag)
-                            <span class="badge bg-dark">{{$tag->name}}</span>
+                            <span class="badge bg-dark"><a class="text-white" href="{{url('/subject/' . $tag->slug)}}">{{$tag->name}}</a></span>
                         @endforeach
                     </td>
                 </tr>
