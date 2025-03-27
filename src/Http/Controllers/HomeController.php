@@ -83,12 +83,12 @@ class HomeController extends Controller
         $data['project']=Project::with(['diaryentries.venue','diaryentries' => function ($q) { 
             $q->where('diarydatetime', '>', date('Y-m-d'))
               ->orderBy('diarydatetime', 'ASC')->first();
-        }])->whereSlug($slug)->first();
+        }])->whereSlug($slug)->where('publish',1)->first();
         return view('hub::web.project',$data);
     }
 
     public function projects(){
-        $data['projects']=Project::orderBy('project')->get();
+        $data['projects']=Project::orderBy('project')->where('publish',1)->get();
         return view('hub::web.projects',$data);
     }
 
