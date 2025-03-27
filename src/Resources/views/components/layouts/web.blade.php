@@ -41,9 +41,7 @@
     <div class="container position-relative d-flex align-items-center justify-content-between">
 
       <a href="{{url('/')}}" class="logo d-flex align-items-center me-auto me-xl-0">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="{{ asset('hub/images/logo.png') }}" alt=""> -->
-        <h3 class="mt-2 sitename text-white">{{setting('general.site_name')}}</h3>
+        <img src="{{ asset('hub/images/header.png') }}" alt="">
       </a>
 
       <nav id="navmenu" class="navmenu">
@@ -76,7 +74,7 @@
       <div class="row gy-4">
         <div class="col-lg-4 col-md-6 footer-about">
           <a href="index.html" class="logo d-flex align-items-center">
-            <span class="sitename">{{setting('general.site_name')}}</span>
+            <img src="{{ asset('hub/images/header.png') }}" alt="">
           </a>
           <div class="footer-contact pt-3">
             {{setting('general.physical_address')}}
