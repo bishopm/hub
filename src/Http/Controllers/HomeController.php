@@ -115,4 +115,13 @@ class HomeController extends Controller
         $data['venues']=Venue::orderBy('venue')->where('publish',1)->get();
         return view('hub::web.venues',$data);
     }
+
+    public function week($week='') {
+        if ($week==''){
+            $week=date('Y-m-d');
+        }
+        $data['week']=$week;
+        $data['venues']=Venue::orderBy('venue')->where('publish',1)->get();
+        return view('hub::web.week',$data);
+    }
 }

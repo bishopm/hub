@@ -32,7 +32,7 @@ class AdminPanelProvider extends PanelProvider
                 'primary' => Color::Indigo
             ])
             ->brandLogo(asset('hub/images/backendlogo.png'))
-            ->brandLogoHeight('2rem')
+            ->brandLogoHeight('2.5rem')
             ->favicon(asset('hub/images/favicon.png'))
             ->discoverResources(in: base_path('vendor/bishopm/hub/src/Filament/Resources'), for: 'Bishopm\\Hub\\Filament\\Resources')
             ->discoverPages(in: base_path('vendor/bishopm/hub/src/Filament/Pages'), for: 'Bishopm\\Hub\\Filament\\Pages')

@@ -107,6 +107,7 @@
                       @endif
                     </td>
                   </tr>
+                  <tr class="table-dark"><th colspan="100%"><small><a class="text-white" href="{{url('/week')}}">View week bookings</a></small></th></tr>
                 </table>
               </div>
             </div> <!-- End Trending Section -->
