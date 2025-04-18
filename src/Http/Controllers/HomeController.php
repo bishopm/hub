@@ -121,7 +121,45 @@ class HomeController extends Controller
             $week=date('Y-m-d');
         }
         $data['week']=$week;
-        $data['venues']=Venue::orderBy('venue')->where('publish',1)->get();
+        $venues=Venue::orderBy('venue')->where('publish',1)->get();
+        foreach ($venues as $venue){
+            $data['venues'][]=[
+                'id'=>$venue->id,
+                'title'=>$venue->venue
+            ];
+        }
+        $today=date('Y-m-d');
+        $diaries=Diaryentry::with('venue','diarisable')->where('diarydatetime','>',$today . ' 00:00:00')->orderBy('diarydatetime','ASC')->get();
+        foreach ($diaries as $diary){
+            if ($diary->diarisable_type=='group'){
+                $data['diaries'][]=[
+                    'id'=>$diary->id,
+                    'start'=>$diary->diarydatetime,
+                    'end'=>substr($diary->diarydatetime,0,11) . $diary->endtime,
+                    'title'=>$diary->diarisable->groupname . " (" . $diary->venue->venue . ")",
+                    'resourceId'=>$diary->venue_id,
+                    'color'=>$diary->venue->colour
+                ];
+            } elseif ($diary->diarisable_type=='tenant') {
+                $data['diaries'][]=[
+                    'id'=>$diary->id,
+                    'start'=>$diary->diarydatetime,
+                    'end'=>substr($diary->diarydatetime,0,11) . $diary->endtime,
+                    'title'=>$diary->diarisable->tenant . " (" . $diary->venue->venue . ")",
+                    'resourceId'=>$diary->venue_id,
+                    'color'=>$diary->venue->colour
+                ];
+            } elseif ($diary->diarisable_type=='event') {
+                $data['diaries'][]=[
+                    'id'=>$diary->id,
+                    'start'=>$diary->diarydatetime,
+                    'end'=>substr($diary->diarydatetime,0,11) . $diary->endtime,
+                    'title'=>$diary->diarisable->event . " (" . $diary->venue->venue . ")",
+                    'resourceId'=>$diary->venue_id,
+                    'color'=>$diary->venue->colour
+                ];
+            } 
+        }
         return view('hub::web.week',$data);
     }
 }

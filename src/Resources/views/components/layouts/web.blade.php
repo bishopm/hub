@@ -36,6 +36,11 @@
 
   <!-- Main CSS File -->
   <link href="{{ asset('hub/css/main.css') }}" rel="stylesheet">
+  <style>
+    h4.ec-event-title {
+      font-size: 11pt;
+    }
+  </style>
 </head>
 <body class="index-page">
   <header id="header" class="header d-flex align-items-center sticky-top">
