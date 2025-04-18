@@ -80,6 +80,7 @@ class HubServiceProvider extends ServiceProvider
         }
         Blade::componentNamespace('Bishopm\\Hub\\Resources\\Views\\Components', 'hub');
         Relation::morphMap([
+            'course' => 'Bishopm\Hub\Models\Course',
             'group' => 'Bishopm\Hub\Models\Group',
             'tenant' => 'Bishopm\Hub\Models\Tenant',
             'household' => 'Bishopm\Hub\Models\Household',
