@@ -117,10 +117,6 @@ class HomeController extends Controller
     }
 
     public function week($week='') {
-        if ($week==''){
-            $week=date('Y-m-d');
-        }
-        $data['week']=$week;
         $venues=Venue::orderBy('venue')->where('publish',1)->get();
         foreach ($venues as $venue){
             $data['venues'][]=[
@@ -128,7 +124,7 @@ class HomeController extends Controller
                 'title'=>$venue->venue
             ];
         }
-        $today=date('Y-m-d');
+        $today=date('Y-m-d',strtotime('monday this week'));
         $diaries=Diaryentry::with('venue','diarisable')->where('diarydatetime','>',$today . ' 00:00:00')->orderBy('diarydatetime','ASC')->get();
         foreach ($diaries as $diary){
             if ($diary->diarisable_type=='group'){
