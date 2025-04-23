@@ -3,7 +3,7 @@
         <div id="ec"></div>
         <script>
             let ec = EventCalendar.create(document.getElementById('ec'), {
-                view: 'timeGridWeek',
+                view: 'resourceTimeGridDay',
                 headerToolbar: {
                     start: 'prev,next today',
                     center: 'title',
