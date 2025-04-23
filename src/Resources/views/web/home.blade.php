@@ -1,5 +1,4 @@
 <x-hub::layouts.web pageName="Home">
-    <!-- Trending Category Section -->
     <section id="trending-category" class="trending-category section">
       <div class="row g-5">
         <div class="col-lg-4">
@@ -74,7 +73,7 @@
             <div class="col-lg-4">
               <div class="text-end">
                 <table class="table table-sm table-borderless">
-                  <tr class="table-dark"><th>Today@theHub</th></tr>
+                  <tr class="table-dark"><th><a style="color:yellow;" href="{{url('/week')}}">Today@theHub</a></th></tr>
                   @foreach ($residents as $resident)
                     <tr class="table-dark"><td><small><a class="text-white" href="{{url('/' . $resident['slug'])}}">{{$resident['resident']}}</a><br><b>
                       @if ($resident[strtolower(date('l'))])
