@@ -128,14 +128,16 @@ class HomeController extends Controller
         $diaries=Diaryentry::with('venue','diarisable')->where('diarydatetime','>',$today . ' 00:00:00')->orderBy('diarydatetime','ASC')->get();
         foreach ($diaries as $diary){
             if ($diary->diarisable_type=='group'){
-                $data['diaries'][]=[
-                    'id'=>$diary->id,
-                    'start'=>$diary->diarydatetime,
-                    'end'=>substr($diary->diarydatetime,0,11) . $diary->endtime,
-                    'title'=>$diary->diarisable->groupname . " (" . $diary->venue->venue . ")",
-                    'resourceId'=>$diary->venue_id,
-                    'color'=>$diary->venue->colour
-                ];
+                if (isset($diary->diarisable->groupname)){
+                    $data['diaries'][]=[
+                        'id'=>$diary->id,
+                        'start'=>$diary->diarydatetime,
+                        'end'=>substr($diary->diarydatetime,0,11) . $diary->endtime,
+                        'title'=>$diary->diarisable->groupname . " (" . $diary->venue->venue . ")",
+                        'resourceId'=>$diary->venue_id,
+                        'color'=>$diary->venue->colour
+                    ];
+                }
             } elseif ($diary->diarisable_type=='tenant') {
                 $data['diaries'][]=[
                     'id'=>$diary->id,
