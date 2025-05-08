@@ -1,10 +1,9 @@
 <?php
 
-namespace Bishopm\Hub\Filament\Clusters\Website\Resources;
+namespace Bishopm\Hub\Filament\Resources;
 
-use Bishopm\Hub\Filament\Clusters\Website;
-use Bishopm\Hub\Filament\Clusters\Website\Resources\PageResource\Pages;
-use Bishopm\Hub\Filament\Clusters\Website\Resources\PageResource\RelationManagers;
+use Bishopm\Hub\Filament\Resources\PageResource\Pages;
+use Bishopm\Hub\Filament\Resources\PageResource\RelationManagers;
 use Bishopm\Hub\Models\Page;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -20,7 +19,6 @@ class PageResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
-    protected static ?string $cluster = Website::class;
 
     public static function form(Form $form): Form
     {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Bishopm\Hub\Filament\Clusters\Website\Resources\EventResource\Pages;
+namespace Bishopm\Hub\Filament\Resources\EventResource\Pages;
 
-use Bishopm\Hub\Filament\Clusters\Website\Resources\EventResource;
+use Bishopm\Hub\Filament\Resources\EventResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 

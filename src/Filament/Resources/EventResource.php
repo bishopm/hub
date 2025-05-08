@@ -1,10 +1,9 @@
 <?php
 
-namespace Bishopm\Hub\Filament\Clusters\Website\Resources;
+namespace Bishopm\Hub\Filament\Resources;
 
-use Bishopm\Hub\Filament\Clusters\Website;
-use Bishopm\Hub\Filament\Clusters\Website\Resources\EventResource\Pages;
-use Bishopm\Hub\Filament\Clusters\Website\Resources\EventResource\RelationManagers;
+use Bishopm\Hub\Filament\Resources\EventResource\Pages;
+use Bishopm\Hub\Filament\Resources\EventResource\RelationManagers;
 use Bishopm\Hub\Models\Event;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -19,8 +18,6 @@ class EventResource extends Resource
     protected static ?string $model = Event::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-calendar-days';
-
-    protected static ?string $cluster = Website::class;
 
     public static function form(Form $form): Form
     {

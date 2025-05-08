@@ -1,10 +1,9 @@
 <?php
 
-namespace Bishopm\Hub\Filament\Clusters\Website\Resources;
+namespace Bishopm\Hub\Filament\Resources;
 
-use Bishopm\Hub\Filament\Clusters\Website;
-use Bishopm\Hub\Filament\Clusters\Website\Resources\ResidentResource\Pages;
-use Bishopm\Hub\Filament\Clusters\Website\Resources\ResidentResource\RelationManagers;
+use Bishopm\Hub\Filament\Resources\ResidentResource\Pages;
+use Bishopm\Hub\Filament\Resources\ResidentResource\RelationManagers;
 use Bishopm\Hub\Models\Resident;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -20,9 +19,8 @@ class ResidentResource extends Resource
 {
     protected static ?string $model = Resident::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-home-modern';
 
-    protected static ?string $cluster = Website::class;
 
     public static function form(Form $form): Form
     {

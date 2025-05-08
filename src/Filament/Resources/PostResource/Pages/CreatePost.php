@@ -1,8 +1,8 @@
 <?php
 
-namespace Bishopm\Hub\Filament\Clusters\Website\Resources\PostResource\Pages;
+namespace Bishopm\Hub\Filament\Resources\PostResource\Pages;
 
-use Bishopm\Hub\Filament\Clusters\Website\Resources\PostResource;
+use Bishopm\Hub\Filament\Resources\PostResource;
 use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
 

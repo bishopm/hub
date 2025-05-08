@@ -1,8 +1,8 @@
 <?php
 
-namespace Bishopm\Hub\Filament\Clusters\Website\Resources\PageResource\Pages;
+namespace Bishopm\Hub\Filament\Resources\PageResource\Pages;
 
-use Bishopm\Hub\Filament\Clusters\Website\Resources\PageResource;
+use Bishopm\Hub\Filament\Resources\PageResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 

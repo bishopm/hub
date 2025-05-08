@@ -1,10 +1,9 @@
 <?php
 
-namespace Bishopm\Hub\Filament\Clusters\Website\Resources;
+namespace Bishopm\Hub\Filament\Resources;
 
-use Bishopm\Hub\Filament\Clusters\Website;
-use Bishopm\Hub\Filament\Clusters\Website\Resources\PostResource\Pages;
-use Bishopm\Hub\Filament\Clusters\Website\Resources\PostResource\RelationManagers;
+use Bishopm\Hub\Filament\Resources\PostResource\Pages;
+use Bishopm\Hub\Filament\Resources\PostResource\RelationManagers;
 use Bishopm\Hub\Models\Post;
 use Filament\Forms;
 use Filament\Forms\Components\SpatieTagsInput;
@@ -25,7 +24,6 @@ class PostResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-pencil-square';
 
-    protected static ?string $cluster = Website::class;
 
     protected static ?string $modelLabel = 'Blog post';
 

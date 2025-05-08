@@ -1,8 +1,8 @@
 <?php
 
-namespace Bishopm\Hub\Filament\Clusters\Website\Resources\ResidentResource\Pages;
+namespace Bishopm\Hub\Filament\Resources\ResidentResource\Pages;
 
-use Bishopm\Hub\Filament\Clusters\Website\Resources\ResidentResource;
+use Bishopm\Hub\Filament\Resources\ResidentResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
