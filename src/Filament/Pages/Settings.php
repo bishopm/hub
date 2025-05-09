@@ -28,6 +28,19 @@ class Settings extends BaseSettings
                             TextInput::make('database.username'),
                             TextInput::make('database.password')->password(),
                         ]),
+                    Tabs\Tab::make('Email')
+                        ->columns(2)
+                        ->schema([
+                            TextInput::make('email.hub_email'),
+                            TextInput::make('email.mailer'),
+                            TextInput::make('email.mail_host'),
+                            TextInput::make('email.mail_port'),
+                            TextInput::make('email.mail_username'),
+                            TextInput::make('email.mail_password')->password(),
+                            TextInput::make('email.mail_encryption'),
+                            TextInput::make('email.mail_from_address'),
+                            TextInput::make('email.mail_from_name')
+                        ]),
                     Tabs\Tab::make('General')
                         ->columns(2)
                         ->schema([

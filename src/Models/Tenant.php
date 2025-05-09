@@ -21,4 +21,9 @@ class Tenant extends Model
     {
         return $this->morphToMany(Tag::class, 'taggable');
     }
+
+    public function getContactAttribute()
+    {
+        return $this->contact_firstname . ' ' . $this->contact_surname;
+    }
 }
