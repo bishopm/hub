@@ -30,6 +30,10 @@ class HomeController extends Controller
         return view('hub::web.blogpost',$data);
     }
 
+    public function churches(){
+        return view('hub::churches.home');
+    }
+
     public function group($slug){
         $data['group']=Tenant::with(['diaryentries.venue','diaryentries' => function ($q) { 
             $q->where('diarydatetime', '>', date('Y-m-d'))

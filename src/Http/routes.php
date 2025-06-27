@@ -3,6 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use Spatie\Honeypot\ProtectAgainstSpam;
 
+// Churches routes
+Route::domain('churches.' . env('APP_URL'))->group(function() {
+    Route::middleware(['web'])->controller('\Bishopm\Hub\Http\Controllers\HomeController')->group(function () {
+        Route::get('/', 'churches')->name('churches.home');
+    });
+});
+
 // Website routes
 Route::middleware(['web'])->controller('\Bishopm\Hub\Http\Controllers\HomeController')->group(function () {
     Route::get('/', 'home')->name('web.home');
