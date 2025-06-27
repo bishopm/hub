@@ -21,6 +21,7 @@ class ResidentResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-home-modern';
 
+    protected static ?string $navigationGroup = 'Community hub';
 
     public static function form(Form $form): Form
     {

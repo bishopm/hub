@@ -25,6 +25,8 @@ class TenantResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-users';
 
+    protected static ?string $navigationGroup = 'Community hub';
+
     public static function form(Form $form): Form
     {
         return $form

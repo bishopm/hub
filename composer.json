@@ -13,7 +13,7 @@
     "keywords": ["Laravel", "Community"],
     "require": {
         "illuminate/support": "~12",
-	"livewire/livewire": "~3",
+	    "livewire/livewire": "~3",
     	"filament/filament": "^3.2.133",
         "guava/calendar": "~1",
         "outerweb/filament-settings": "~1",

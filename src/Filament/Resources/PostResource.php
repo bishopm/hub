@@ -24,6 +24,7 @@ class PostResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-pencil-square';
 
+    protected static ?string $navigationGroup = 'Community hub';
 
     protected static ?string $modelLabel = 'Blog post';
 
