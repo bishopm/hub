@@ -6,13 +6,14 @@ use Bishopm\Hub\Filament\Clusters\Settings;
 use Bishopm\Hub\Filament\Resources\ChurchResource\Pages;
 use Bishopm\Hub\Filament\Resources\ChurchResource\RelationManagers;
 use Bishopm\Hub\Models\Church;
+use Dotswan\MapPicker\Fields\Map;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
 
 class ChurchResource extends Resource
 {
@@ -28,13 +29,30 @@ class ChurchResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('church')
                     ->required()
+                    ->live(onBlur: true)
+                    ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))
                     ->maxLength(191),
+                Forms\Components\TextInput::make('contact')
+                    ->maxLength(191),
+                Map::make('location')
+                    ->afterStateUpdated(function (Set $set, ?array $state): void {
+                        $set('latitude', $state['lat']);
+                        $set('longitude', $state['lng']);
+                    })
+                    ->afterStateHydrated(function ($state, $record, Set $set): void {
+                        if ($record){
+                            $set('location', [
+                                'lat' => $record->latitude,
+                                'lng' => $record->longitude
+                            ]);
+                        }
+                    }),
+                Forms\Components\Hidden::make('latitude'),
+                Forms\Components\Hidden::make('longitude'),
                 Forms\Components\TextInput::make('slug')
                     ->required()
                     ->maxLength(191),
                 Forms\Components\TextInput::make('website')
-                    ->maxLength(191),
-                Forms\Components\TextInput::make('contact')
                     ->maxLength(191),
                 Forms\Components\Textarea::make('description')
                     ->columnSpanFull(),
@@ -50,13 +68,8 @@ class ChurchResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('church')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('slug')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('website')
-                    ->searchable(),
                 Tables\Columns\TextColumn::make('contact')
                     ->searchable(),
-                Tables\Columns\ImageColumn::make('image'),
                 Tables\Columns\IconColumn::make('publish')
                     ->boolean(),
             ])

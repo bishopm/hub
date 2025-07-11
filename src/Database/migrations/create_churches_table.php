@@ -14,6 +14,8 @@ return new class extends Migration
             $table->string('church');
             $table->string('slug');
             $table->string('website')->nullable();
+            $table->double('latitude')->nullable();
+            $table->double('longitude')->nullable();
             $table->string('contact')->nullable();
             $table->text('description')->nullable();
             $table->string('image')->nullable();

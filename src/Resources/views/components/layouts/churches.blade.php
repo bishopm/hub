@@ -53,7 +53,7 @@
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a class="text-black" href="{{url('/')}}">Home</a></li>
-          <li><a class="text-black"  href="#">Churches</a></li>
+          <li><a class="text-black"  href="{{url('/churches')}}">Churches</a></li>
           <li><a class="text-black"  href="#">Projects</a></li>
           <li><a class="text-black"  href="#">Coming up</a></li>
         </ul>

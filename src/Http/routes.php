@@ -6,7 +6,9 @@ use Spatie\Honeypot\ProtectAgainstSpam;
 // Churches routes
 Route::domain('churches.' . env('APP_URL'))->group(function() {
     Route::middleware(['web'])->controller('\Bishopm\Hub\Http\Controllers\HomeController')->group(function () {
-        Route::get('/', 'churches')->name('churches.home');
+        Route::get('/', 'churcheshome')->name('churches.home');
+        Route::get('/churches', 'churches')->name('churches.churches');
+        Route::get('/churches/{slug}', 'church')->name('churches.church');
     });
 });
 

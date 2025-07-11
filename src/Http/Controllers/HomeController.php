@@ -2,6 +2,7 @@
 
 namespace Bishopm\Hub\Http\Controllers;
 
+use Bishopm\Hub\Models\Church;
 use Bishopm\Hub\Models\Diaryentry;
 use Bishopm\Hub\Models\Tenant;
 use Bishopm\Hub\Models\Page;
@@ -30,8 +31,19 @@ class HomeController extends Controller
         return view('hub::web.blogpost',$data);
     }
 
+    public function church($slug){
+        $data['church']=Church::whereSlug($slug)->first();
+        return view('hub::churches.church',$data);
+    }
+
     public function churches(){
-        return view('hub::churches.home');
+        $data['churches']=Church::orderBy('church','ASC')->get();
+        return view('hub::churches.churches',$data);
+    }
+
+    public function churcheshome(){
+        $data['churches']=Church::all();
+        return view('hub::churches.home',$data);
     }
 
     public function group($slug){
