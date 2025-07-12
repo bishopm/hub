@@ -37,12 +37,12 @@ class HomeController extends Controller
     }
 
     public function churches(){
-        $data['churches']=Church::orderBy('church','ASC')->get();
+        $data['churches']=Church::orderBy('church','ASC')->where('publish',1)->get();
         return view('hub::churches.churches',$data);
     }
 
     public function churcheshome(){
-        $data['churches']=Church::all();
+        $data['churches']=Church::where('publish',1)->get();
         return view('hub::churches.home',$data);
     }
 

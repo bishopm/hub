@@ -2,7 +2,9 @@
     <h3>{{$church->church}}</h3>
     <div class="row">
         <div class="col-md">
-            Details here
+            {!! "<b>Website: </b><a target=\"_blank\" href=\"" . $church->website . "\">" . $church->website . "</a><br>" ?? ''!!}
+            {!! "<b>Contact: </b>" . $church->contact . "<br>" ?? ''!!}
+            {!! $church->description . "<br>" ?? ''!!}
         </div>
         <div class="col-md">
             <div style="height:400px" id="map"></div>
