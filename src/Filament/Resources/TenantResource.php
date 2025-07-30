@@ -117,12 +117,13 @@ class TenantResource extends Resource
         ];
     }
 
-    public static function sendEmail($data, $indiv){
-        $data['firstname'] = $indiv['firstname'];
-        if ($indiv['email']){
+    public static function sendEmail($data, $tenant){
+        $data['tenant'] = $tenant['tenant'];
+        $data['contact'] = $tenant['firstname'] . " " . $tenant['surname'];
+        if ($tenant['email']){
             $template = new HubMail($data);
-            SendEmail::dispatch($indiv['email'], $template);
+            SendEmail::dispatch($tenant['email'], $template);
         }
-        Notification::make('Email sent')->title('Email sent to ' . $indiv->firstname . " " . $indiv->surname)->send();
+        Notification::make('Email sent')->title('Email sent to ' . $tenant['tenant'])->send();
     }
 }

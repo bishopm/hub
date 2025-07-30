@@ -40,9 +40,9 @@ class HubMail extends Mailable
         return new Content(
             markdown: 'hub::mail.templates.email',
             with: [
-                'firstname' => $this->data['firstname'],
-                'url' => setting('general.church_website'),
-                'subject' => $this->data['subject'] ?? 'Message from ' . setting('general.church_name'),
+                'tenant' => $this->data['tenant'],
+                'contact' => $this->data['contact'],
+                'subject' => $this->data['subject'] ?? 'Message from Westville Community Hub',
                 'body' => $this->data['body'],
                 'sender' => $this->data['sender'] ?? ''
             ],
