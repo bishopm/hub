@@ -10,12 +10,12 @@
 {{-- Body --}}
 # {{$subject}}
 
-Dear {{$tenant}} @if ($contact<>$tenant) (Attention: {{$contact}}) @endif
+Dear {{$tenant}} @if ($contact) (Attention: {{$contact}}) @endif <br>
 
 {!!$body!!}
 
 Thanks,<br>
-{{ $sender }}<br>
+@if($sender){{ $sender }}<br>@endif
 Westville Community Hub
 
 {{-- Footer --}}

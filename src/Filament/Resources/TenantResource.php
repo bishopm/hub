@@ -118,10 +118,8 @@ class TenantResource extends Resource
     }
 
     public static function sendEmail($data, $tenant){
-        $data['tenant'] = $tenant['tenant'];
-        $data['contact'] = $tenant['firstname'] . " " . $tenant['surname'];
         if ($tenant['email']){
-            $template = new HubMail($data);
+            $template = new HubMail($data,$tenant);
             SendEmail::dispatch($tenant['email'], $template);
         }
         Notification::make('Email sent')->title('Email sent to ' . $tenant['tenant'])->send();

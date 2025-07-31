@@ -3,10 +3,14 @@
 namespace Bishopm\Hub\Filament\Resources\TenantResource\Pages;
 
 use Bishopm\Hub\Filament\Resources\TenantResource;
+use Bishopm\Hub\Jobs\SendEmail;
+use Bishopm\Hub\Mail\HubMail;
+use Bishopm\Hub\Models\Tenant;
 use Filament\Actions;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\TextInput;
+use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ListRecords;
 
 class ListTenants extends ListRecords
@@ -30,20 +34,19 @@ class ListTenants extends ListRecords
     }
 
     public function sendEmail($data){
-        /*$tenant=Tenant::with('individuals')->where('id',$this->record->id)->first();
-        $data['url'] = "https://westvillemethodist.co.za";
+        $tenants=Tenant::whereNotNull('email')->where('active',1)->get()->toArray();
         $count=0;
-        foreach ($tenant->individuals as $indiv){
-            $data['firstname'] = $indiv['firstname'];
-            if ($indiv['email']){
-                //Mail::to($indiv['email'])->queue(new ChurchMail($data));
-                $count++;
+        foreach ($tenants as $tenant){
+            if ($tenant['email']){
+                $template = new HubMail($data,$tenant);
+                if ($tenant['email']=="michael@bishop.net.za"){
+                    SendEmail::dispatch($tenant['email'], $template);
+                }
             }
+            $count++;
         }
-        if ($count > 1){
-            Notification::make('Email sent')->title('Email sent to ' . $count . ' individuals')->send();
-        } elseif ($count==1) {
-            Notification::make('Email sent')->title('Email sent to 1 individual')->send();
-        }*/
+        if ($count>0){
+            Notification::make('Email sent')->title('Email sent to ' . $count . ' tenants')->send();
+        }
     }
 }

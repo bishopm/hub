@@ -17,8 +17,15 @@ class HubMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct(protected array $data)
+    public function __construct(protected array $data, $tenant)
     {
+        $this->data=$data;
+        $this->data['tenant'] = $tenant['tenant'];
+        if (($tenant['contact_firstname']) or ($tenant['contact_surname'])){
+            $this->data['contact'] = $tenant['contact_firstname'] . " " . $tenant['contact_surname'];
+        } else {
+            $this->data['contact']='';
+        }
     }
 
     /**
