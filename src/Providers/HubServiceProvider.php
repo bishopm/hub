@@ -45,8 +45,8 @@ class HubServiceProvider extends ServiceProvider
             Config::set('mail.mailers.' . setting('email.mailer') . '.username',setting('email.mail_username'));
             Config::set('mail.mailers.' . setting('email.mailer') . '.password',setting('email.mail_password'));
             Config::set('mail.mailers.' . setting('email.mailer') . '.encryption',setting('email.mail_encryption'));
-            Config::set('mail.mailers.' . setting('email.mailer') . '.from_address',setting('email.mail_from_address'));
-            Config::set('mail.mailers.' . setting('email.mailer') . '.from_name',setting('email.mail_from_name'));    
+            Config::set('mail.from.address',setting('email.mail_from_address'));
+            Config::set('mail.from.name',setting('email.mail_from_name'));    
             Config::set('filesystems.disks.google.driver','google');
             Config::set('filesystems.disks.google.clientId',setting('services.drive_clientid'));
             Config::set('filesystems.disks.google.clientSecret',setting('services.drive_clientsecret'));
@@ -57,7 +57,6 @@ class HubServiceProvider extends ServiceProvider
             Config::set('broadcasting.pusher.app_id',setting('services.pusher.app_id'));
             Config::set('broadcasting.pusher.options.cluster',setting('services.pusher.app_cluster'));
             Config::set('broadcasting.pusher.options.useTLS',true);
-
         }
         Config::set('auth.providers.users.model','Bishopm\Hub\Models\User');
         Config::set('filament-spatie-roles-permissions.clusters.permissions',\Bishopm\Hub\Filament\Clusters\Settings::class);
