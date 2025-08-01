@@ -88,7 +88,11 @@
                     @foreach ($slot as $entry)
                       <tr>
                         <td>
-                          <a href="{{url('/groups/' . $entry->diarisable->slug)}}">{{$entry->diarisable->tenant}}</a> 
+                          @if ($entry->diarisable->publish==1)
+                            <a href="{{url('/groups/' . $entry->diarisable->slug)}}">{{$entry->diarisable->tenant}}</a>
+                          @else
+                            {{$entry->diarisable->tenant}}
+                          @endif
                           <a href="{{url('/venues/' . $entry->venue->slug)}}"><small>({{$entry->venue->venue}})</small></a>
                         </td>
                       </tr>
