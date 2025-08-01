@@ -39,9 +39,7 @@ class ListTenants extends ListRecords
         foreach ($tenants as $tenant){
             if ($tenant['email']){
                 $template = new HubMail($data,$tenant);
-                if ($tenant['email']=="michael@bishop.net.za"){
-                    SendEmail::dispatch($tenant['email'], $template);
-                }
+                SendEmail::dispatch($tenant['email'], $template);
             }
             $count++;
         }
