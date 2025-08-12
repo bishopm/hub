@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-md-6 pb-2">
                     @foreach ($venue->tags as $tag)
-                        <span class="badge bg-dark"><a class="text-white" href="{{url('/subject/' . $tag->slug)}}">{{$tag->name}}</a></span>
+                        <span class="badge bg-dark">{{$tag->name}}</span>
                     @endforeach
                     <br>
                     @if ($venue->length)
