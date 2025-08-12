@@ -16,6 +16,11 @@ class Tag extends Model
         return $this->morphToMany(Project::class,'taggable');
     }
 
+    public function venues(): MorphToMany
+    {
+        return $this->morphToMany(Venue::class,'taggable');
+    }
+
     public function tenants(): MorphToMany
     {
         return $this->morphToMany(Tenant::class,'taggable');

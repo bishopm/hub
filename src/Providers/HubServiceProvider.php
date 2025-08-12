@@ -13,8 +13,6 @@ use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Schema;
 use Livewire\Livewire;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
 
 class HubServiceProvider extends ServiceProvider
 {
@@ -84,7 +82,8 @@ class HubServiceProvider extends ServiceProvider
             'tenant' => 'Bishopm\Hub\Models\Tenant',
             'household' => 'Bishopm\Hub\Models\Household',
             'individual' => 'Bishopm\Hub\Models\Individual',
-            'project' => 'Bishopm\Hub\Models\Project'
+            'project' => 'Bishopm\Hub\Models\Project',
+            'venue' => 'Bishopm\Hub\Models\Venue'
         ]);
         Gate::before(function (User $user, string $ability) {
             return $user->isSuperAdmin() ? true: null;     

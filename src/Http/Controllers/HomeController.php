@@ -10,9 +10,7 @@ use Bishopm\Hub\Models\Post;
 use Bishopm\Hub\Models\Project;
 use Bishopm\Hub\Models\Resident;
 use Bishopm\Hub\Models\Venue;
-use Bishopm\Hub\Models\Tag;
 use Illuminate\Support\Facades\DB;
-use Spatie\Tags\Tag as SpatieTag;
 
 class HomeController extends Controller
 {
@@ -123,7 +121,7 @@ class HomeController extends Controller
     }
 
     public function venue($slug){
-        $data['venue']=Venue::whereSlug($slug)->first();
+        $data['venue']=Venue::with('tags')->whereSlug($slug)->first();
         return view('hub::web.venue',$data);
     }
 
