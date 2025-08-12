@@ -121,7 +121,8 @@ class HomeController extends Controller
     }
 
     public function venue($slug){
-        $data['venue']=Venue::with('tags')->whereSlug($slug)->first();
+        $data['venue']=Venue::whereSlug($slug)->first();
+        $data['group']=Tenant::find(1);
         return view('hub::web.venue',$data);
     }
 
