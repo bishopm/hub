@@ -91,6 +91,17 @@
                       <tr><td>Nothing booked for today</td></tr>
                     @endforelse
                   @endforeach
+                  <tr class="table-dark"><th colspan="100%"><small><a style="color:yellow;" href="{{url('/week')}}">View week bookings</a></small></th></tr>
+                  @foreach ($residents as $resident)
+                    <tr class="table-dark"><td><small><b><a class="text-white" href="{{url('/' . $resident['slug'])}}">{{$resident['resident']}}</a></b><br>
+                      @if ($resident[strtolower(date('l'))])
+                        {{$resident[strtolower(date('l'))]}}
+                      @else
+                        Closed
+                      @endif
+                      </small></td>
+                    </tr>
+                  @endforeach
                   <tr class="table-dark"><th>Explore</th></tr>
                   <tr>
                     <td>
@@ -101,16 +112,6 @@
                       @endif
                     </td>
                   </tr>
-                  <tr class="table-dark"><th colspan="100%"><small><a style="color:yellow;" href="{{url('/week')}}">View week bookings</a></small></th></tr>
-                  @foreach ($residents as $resident)
-                    <tr class="table-dark"><td><small><b><a class="text-white" href="{{url('/' . $resident['slug'])}}">{{$resident['resident']}}</a></b><br>
-                      @if ($resident[strtolower(date('l'))])
-                        {{$resident[strtolower(date('l'))]}}
-                      @else
-                        Closed
-                      @endif
-                      </small></td></tr>
-                  @endforeach
                 </table>
               </div>
             </div> <!-- End Trending Section -->
