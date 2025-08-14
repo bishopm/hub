@@ -102,7 +102,7 @@
                       </small></td>
                     </tr>
                   @endforeach
-                  <tr class="table-dark"><th>Explore</th></tr>
+                  <tr><th>Explore</th></tr>
                   <tr>
                     <td>
                       @if (isset($tags))
