@@ -74,23 +74,23 @@
               <div class="text-end">
                 <table class="table table-sm table-borderless">
                   <tr class="table-dark"><th><a style="color:white;" href="{{url('/week')}}">Today@theHub</a></th></tr>
-                                    @forelse ($diaryentries as $ttt=>$slot)
-                    <tr class="table-info"><th>{{$ttt}}</th></tr>
-                    @foreach ($slot as $entry)
-                      <tr>
-                        <td>
-                          @if ($entry->diarisable->publish==1)
-                            <a href="{{url('/groups/' . $entry->diarisable->slug)}}">{{$entry->diarisable->tenant}}</a>
-                          @else
-                            {{$entry->diarisable->tenant}}
-                          @endif
-                          <a href="{{url('/venues/' . $entry->venue->slug)}}"><small>({{$entry->venue->venue}})</small></a>
-                        </td>
-                      </tr>
+                    @forelse ($diaryentries as $ttt=>$slot)
+                      <tr class="table-info"><th>{{$ttt}}</th></tr>
+                      @foreach ($slot as $entry)
+                        <tr>
+                          <td>
+                            @if ($entry->diarisable->publish==1)
+                              <a href="{{url('/groups/' . $entry->diarisable->slug)}}">{{$entry->diarisable->tenant}}</a>
+                            @else
+                              {{$entry->diarisable->tenant}}
+                            @endif
+                            <a href="{{url('/venues/' . $entry->venue->slug)}}"><small>({{$entry->venue->venue}})</small></a>
+                          </td>
+                        </tr>
+                      @endforeach
                     @empty
                       <tr><td>Nothing booked for today</td></tr>
                     @endforelse
-                  @endforeach
                   <tr class="table-dark"><th colspan="100%"><small><a style="color:yellow;" href="{{url('/week')}}">View week bookings</a></small></th></tr>
                   @foreach ($residents as $resident)
                     <tr class="table-dark"><td><small><b><a class="text-white" href="{{url('/' . $resident['slug'])}}">{{$resident['resident']}}</a></b><br>

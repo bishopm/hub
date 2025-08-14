@@ -110,10 +110,12 @@ class HomeController extends Controller
         $data['posts']=[];//Post::withAnyTags($slug)->where('published',1)->get();
         $data['groups']=DB::connection('church')->table('tenants')
             ->join('taggables','tenants.id','=','taggables.taggable_id')->join('tags','tags.id','=','taggables.tag_id')
+            ->where('tenants.publish',1)
             ->where('tags.slug',$slug)->where('taggables.taggable_type','tenant')
             ->select('tenant','tenants.slug')->get();
         $data['projects']=DB::connection('church')->table('projects')
             ->join('taggables','projects.id','=','taggables.taggable_id')->join('tags','tags.id','=','taggables.tag_id')
+            ->where('projects.publish',1)
             ->where('tags.slug',$slug)->where('taggables.taggable_type','project')
             ->select('project','projects.slug')->get();
         $data['slug']=$slug;
