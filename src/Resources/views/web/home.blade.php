@@ -74,16 +74,7 @@
               <div class="text-end">
                 <table class="table table-sm table-borderless">
                   <tr class="table-dark"><th><a style="color:white;" href="{{url('/week')}}">Today@theHub</a></th></tr>
-                  @foreach ($residents as $resident)
-                    <tr class="table-dark"><td><small><a class="text-white" href="{{url('/' . $resident['slug'])}}">{{$resident['resident']}}</a><br><b>
-                      @if ($resident[strtolower(date('l'))])
-                        {{$resident[strtolower(date('l'))]}}
-                      @else
-                        Closed
-                      @endif
-                      </b></small></td></tr>
-                  @endforeach
-                  @forelse ($diaryentries as $ttt=>$slot)
+                                    @forelse ($diaryentries as $ttt=>$slot)
                     <tr class="table-info"><th>{{$ttt}}</th></tr>
                     @foreach ($slot as $entry)
                       <tr>
@@ -111,6 +102,15 @@
                     </td>
                   </tr>
                   <tr class="table-dark"><th colspan="100%"><small><a style="color:yellow;" href="{{url('/week')}}">View week bookings</a></small></th></tr>
+                  @foreach ($residents as $resident)
+                    <tr class="table-dark"><td><small><b><a class="text-white" href="{{url('/' . $resident['slug'])}}">{{$resident['resident']}}</a></b><br>
+                      @if ($resident[strtolower(date('l'))])
+                        {{$resident[strtolower(date('l'))]}}
+                      @else
+                        Closed
+                      @endif
+                      </small></td></tr>
+                  @endforeach
                 </table>
               </div>
             </div> <!-- End Trending Section -->
