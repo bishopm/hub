@@ -19,7 +19,7 @@
                         @endif
                     </div>
                     <div class="col-md-6">
-                        <img style="float:right; padding-left:10px;" src="{{setting('general.church_storage_url')}}/{{$group->image}}" alt="Image" class="rounded">
+                        <img style="max-width:100%;" src="{{setting('general.church_storage_url')}}/{{$group->image}}" alt="Image" class="rounded">
                     </div>
                 </div>
             @else
